@@ -1,0 +1,69 @@
+{
+  "project_info": {
+    "project_number": "853029439476",
+    "firebase_url": "https://fir-mlkit-objdetection.firebaseio.com",
+    "project_id": "fir-mlkit-objdetection",
+    "storage_bucket": "fir-mlkit-objdetection.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:853029439476:android:f5d313c2d40ee823b71ba1",
+        "android_client_info": {
+          "package_name": "codes.umair.detectface"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "853029439476-mu31i4oup9glcrbea79k383014p3d5ne.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEIWX8k8tX0QuHwwppAv343X1IrNJU9_s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "853029439476-mu31i4oup9glcrbea79k383014p3d5ne.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:853029439476:android:de2a4a5200fbb2a9b71ba1",
+        "android_client_info": {
+          "package_name": "codes.umair.facedetector"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "853029439476-mu31i4oup9glcrbea79k383014p3d5ne.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCEIWX8k8tX0QuHwwppAv343X1IrNJU9_s"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "853029439476-mu31i4oup9glcrbea79k383014p3d5ne.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
