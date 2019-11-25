@@ -1,27 +1,31 @@
 package codes.umair.detectface
 
-import android.content.Intent
+import  android.content.Intent
 import android.os.Bundle
 import android.util.Log
 import android.util.SparseIntArray
 import android.view.Surface
-import android.widget.LinearLayout
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.constraintlayout.widget.ConstraintLayout.*
 import com.google.firebase.ml.vision.FirebaseVision
 import com.google.firebase.ml.vision.common.FirebaseVisionImage
 import com.google.firebase.ml.vision.common.FirebaseVisionImageMetadata
 import com.google.firebase.ml.vision.face.FirebaseVisionFaceDetectorOptions
 import com.otaliastudios.cameraview.CameraView
+import com.otaliastudios.cameraview.Facing
+import com.otaliastudios.cameraview.SizeSelector
+import kotlinx.android.synthetic.main.activity_main.*
+
 
 class MainActivity : AppCompatActivity() {
 
     private val ORIENTATIONS = SparseIntArray()
     private var frameCount = 0L
     private lateinit var metadata: FirebaseVisionImageMetadata.Builder
-    private lateinit var camera : CameraView
     var cameraId = 1
-
+    private lateinit var cameraV : CameraView
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -30,6 +34,14 @@ class MainActivity : AppCompatActivity() {
         ORIENTATIONS.append(Surface.ROTATION_180, 270)
         ORIENTATIONS.append(Surface.ROTATION_270, 180)
 
+        cameraV = CameraView(this)
+
+        var params: LayoutParams = LayoutParams(
+            LayoutParams.MATCH_PARENT,
+            LayoutParams.MATCH_PARENT
+        )
+        cameraV.layoutParams = params
+        cameraV.facing = Facing.FRONT
 
         val options = FirebaseVisionFaceDetectorOptions.Builder()
             .setPerformanceMode(FirebaseVisionFaceDetectorOptions.FAST)
@@ -41,12 +53,12 @@ class MainActivity : AppCompatActivity() {
         metadata = FirebaseVisionImageMetadata.Builder()
             .setFormat(FirebaseVisionImageMetadata.IMAGE_FORMAT_NV21)
 
-        camera.addFrameProcessor {
+        cameraV.addFrameProcessor {
             if (frameCount++ % 24 != 0L) {
                 return@addFrameProcessor
             }
             try {
-                val size = camera.previewSize
+                val size = cameraV.previewSize
                 if (size != null) {
                     metadata
                         .setHeight(size.height)
@@ -103,7 +115,12 @@ class MainActivity : AppCompatActivity() {
 
     override fun onStart() {
         super.onStart()
-        camera.start()
+        cameraV.start()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        cameraV.stop()
     }
 
     private fun launchApp(packageName: String) {
